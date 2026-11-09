@@ -23,7 +23,7 @@ Microservicio desarrollado en **Spring Boot 3.3.5** y **Java 21**, encargado de 
  
 2. Configura las credenciales de tu base de datos Oracle en el archivo ```bash src/main/resources/application.properties```:
 ```bash
-    spring.datasource.url=jdbc:oracle:thin:@dbformativa_high?TNS_ADMIN=./Wallet_DBFormativa
+    spring.datasource.url=jdbc:oracle:thin:@dbform_high?TNS_ADMIN=./Wallet_dbForm
     spring.datasource.username=tu_usuario
     spring.datasource.password=tu_contraseña
 ```
