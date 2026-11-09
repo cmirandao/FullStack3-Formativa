@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.duoc</groupId>
 	<artifactId>biblio</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>biblio</name>
 	<description>Microservicio de gestion de biblioteca</description>
 	<properties>
