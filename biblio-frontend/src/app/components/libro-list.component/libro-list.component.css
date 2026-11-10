@@ -1,0 +1,91 @@
+:host {
+  display: block;
+  background-color: #161922;
+  color: #d1d5db;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+body, .container {
+  background-color: #161922;
+  color: #d1d5db;
+}
+
+.card {
+  background-color: #1e222f;
+  border: 1px solid #2d3343;
+}
+
+.card-header {
+  background-color: #252b3b !important;
+  color: #93c5fd !important;
+  border-bottom: 1px solid #2d3343;
+  font-weight: 500;
+}
+
+.table {
+  color: #d1d5db;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #1a1e29;
+  color: #d1d5db;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #252b3b;
+  color: #f3f4f6;
+}
+
+.form-control {
+  background-color: #141720;
+  border-color: #323b50;
+  color: #e5e7eb;
+}
+
+.form-control:focus {
+  background-color: #141720;
+  border-color: #60a5fa;
+  color: #e5e7eb;
+  box-shadow: 0 0 0 0.25rem rgba(96, 165, 250, 0.15);
+}
+
+.form-label {
+  color: #9ca3af;
+}
+
+/* Regla general para proteger los textos de los botones de cualquier deformación */
+.btn {
+  white-space: nowrap;
+}
+
+/* Tonos sobrios, profesionales y cómodos a la vista */
+.btn-success {
+  background-color: #2b7a4b;
+  border-color: #23633c;
+  color: #ffffff;
+}
+.btn-success:hover {
+  background-color: #23633c;
+  border-color: #1b4f30;
+}
+
+.btn-warning {
+  background-color: #b36b00;
+  border-color: #915500;
+  color: #ffffff;
+}
+.btn-warning:hover {
+  background-color: #915500;
+  border-color: #704100;
+}
+
+.btn-danger {
+  background-color: #a83232;
+  border-color: #872828;
+  color: #ffffff;
+}
+.btn-danger:hover {
+  background-color: #872828;
+  border-color: #661f1f;
+}

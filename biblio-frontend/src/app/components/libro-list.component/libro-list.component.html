@@ -1,9 +1,11 @@
-<div class="container mt-4">
-  <h2 class="mb-4">Gestión de Biblioteca - Duoc UC</h2>
+<div class="container py-4" data-bs-theme="dark">
+  <header class="mb-4 pb-2 border-bottom border-secondary">
+    <h2 class="h4 text-light">Gestión de Biblioteca <span class="text-muted fs-6">| FullStack 3 Duoc UC</span></h2>
+  </header>
 
   <!-- Formulario de Registro / Edición -->
   <div class="card mb-4 shadow-sm">
-    <div class="card-header bg-primary text-white">
+    <div class="card-header">
       {{ modoEdicion ? 'Actualizar Libro' : 'Registrar Nuevo Libro' }}
     </div>
     <div class="card-body">
@@ -19,14 +21,16 @@
           </div>
           <div class="col-md-2">
             <label class="form-label">Año</label>
-            <input type="number" class="form-control" [(ngModel)]="libroForm.anioPublicacion" name="anioPublicacion" required>
+            <input type="number" class="form-control" [(ngModel)]="libroForm.anioPublicacion" name="anioPublicacion"
+              required>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <label class="form-label">Género</label>
             <input type="text" class="form-control" [(ngModel)]="libroForm.genero" name="genero" required>
           </div>
-          <div class="col-md-1 d-flex align-items-end">
+          <div class="col-md-2 d-flex align-items-end">
             <button type="submit" class="btn btn-success w-100">{{ modoEdicion ? 'Actualizar' : 'Guardar' }}</button>
+            <button type="button" class="btn btn-secondary w-100" *ngIf="modoEdicion" (click)="resetForm()">Cancelar</button>
           </div>
         </div>
       </form>
@@ -35,33 +39,33 @@
 
   <!-- Tabla de Resultados -->
   <div class="card shadow-sm">
-    <div class="card-header bg-secondary text-white">Listado de Libros</div>
-    <div class="card-body">
-      <table class="table table-striped table-hover">
+    <div class="card-header text-secondary">Listado de Libros Registrados</div>
+    <div class="card-body p-0">
+      <table class="table table-striped table-hover mb-0 align-middle">
         <thead>
           <tr>
-            <th>ID</th>
+            <th class="ps-3">ID</th>
             <th>Título</th>
             <th>Autor</th>
             <th>Año</th>
             <th>Género</th>
-            <th>Acciones</th>
+            <th class="text-end pe-3">Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let libro of libros">
-            <td>{{ libro.id }}</td>
-            <td>{{ libro.titulo }}</td>
+            <td class="ps-3" th:text>{{ libro.id }}</td>
+            <td class="fw-semibold text-light">{{ libro.titulo }}</td>
             <td>{{ libro.autor }}</td>
             <td>{{ libro.anioPublicacion }}</td>
             <td>{{ libro.genero }}</td>
-            <td>
-              <button class="btn btn-warning btn-sm me-2" (click)="editarLibro(libro)">Editar</button>
-              <button class="btn btn-danger btn-sm" (click)="eliminarLibro(libro.id)">Eliminar</button>
+            <td class="text-end pe-3">
+              <button class="btn btn-warning btn-sm px-2 py-1 me-1" (click)="editarLibro(libro)">Editar</button>
+              <button class="btn btn-danger btn-sm px-2 py-1" (click)="eliminarLibro(libro.id)">Eliminar</button>
             </td>
           </tr>
           <tr *ngIf="libros.length === 0">
-            <td colspan="6" class="text-center">No hay libros registrados.</td>
+            <td colspan="6" class="text-center py-4 text-muted">No hay libros registrados en el sistema.</td>
           </tr>
         </tbody>
       </table>

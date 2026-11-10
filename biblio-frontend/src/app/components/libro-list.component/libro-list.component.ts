@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +23,10 @@ export class LibroListComponent implements OnInit {
     genero: ''
   };
 
-  constructor(private libroService: LibroService) {}
+  constructor(
+    private libroService: LibroService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.cargarLibros();
@@ -31,7 +34,10 @@ export class LibroListComponent implements OnInit {
 
   cargarLibros(): void {
     this.libroService.obtenerLibros().subscribe({
-      next: (data: Libro[]) => { this.libros = data; },
+      next: (data: Libro[]) => { 
+        this.libros = data; 
+        this.cdr.detectChanges();
+      },
       error: (err: any) => { console.error('Error al cargar libros:', err); }
     });
   }
@@ -39,12 +45,18 @@ export class LibroListComponent implements OnInit {
   guardarLibro(): void {
     if (this.modoEdicion && this.libroForm.id) {
       this.libroService.actualizarLibro(this.libroForm.id, this.libroForm).subscribe({
-        next: () => { this.cargarLibros(); this.resetForm(); },
+        next: () => { 
+          this.cargarLibros(); 
+          this.resetForm(); 
+        },
         error: (err: any) => console.error('Error al actualizar:', err)
       });
     } else {
       this.libroService.crearLibro(this.libroForm).subscribe({
-        next: () => { this.cargarLibros(); this.resetForm(); },
+        next: () => { 
+          this.cargarLibros(); 
+          this.resetForm(); 
+        },
         error: (err: any) => console.error('Error al crear:', err)
       });
     }
@@ -67,5 +79,6 @@ export class LibroListComponent implements OnInit {
   resetForm(): void {
     this.libroForm = { titulo: '', autor: '', anioPublicacion: new Date().getFullYear(), genero: '' };
     this.modoEdicion = false;
+    this.cdr.detectChanges();
   }
 }
